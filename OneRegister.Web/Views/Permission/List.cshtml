@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Permissions";
+}
+
+@section Styles{
+    <link href="~/lib/dataTables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/lib/dataTables/responsive/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+}
+<h4 class="text-primary">Permissions List</h4>
+
+<div class="row mt-3">
+    <div class="col">
+        <div>
+            <table id="permissionListGrid" class="table table-striped table-bordered dt-responsive nowrap w-100">
+                <thead class="bg-primary text-light">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Class Name</th>
+                        <th>Method Name</th>
+                        <th>Attribute Type</th>
+                        <th>Organization Name</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_DataTableScripts"); }
+    <script type="text/javascript" src="~/js/permission/list.js" asp-append-version="true"></script>
+}

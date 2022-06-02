@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Unathurised";
+}
+
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-lg-6">
+            <div>
+                <img class="w-100" src="~/pic/unDraw/forbidden.png" />
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="mt-lg-5">
+                <h2 class="billboard-title-success">Unauthorized Access,</h2>
+                <hr />
+                <div class="alert alert-danger" role="alert">
+                    You've tried to open a page or do something that either you are not authorized or you don't have sufficient privilege for, please contact administrator.
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div>
+                        @Html.ActionLink("Ok, Let's start from beginning", "Index", "Home", null, new { @class = "btn btn-outline-primary", role = "button" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

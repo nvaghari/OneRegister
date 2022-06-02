@@ -1,0 +1,12 @@
+D:\Projects\OneRegister\OneRegister.Security\bin\Debug\net6.0\OneRegister.Security.deps.json
+D:\Projects\OneRegister\OneRegister.Security\bin\Debug\net6.0\OneRegister.Security.dll
+D:\Projects\OneRegister\OneRegister.Security\bin\Debug\net6.0\OneRegister.Security.pdb
+D:\Projects\OneRegister\OneRegister.Security\obj\Debug\net6.0\OneRegister.Security.csproj.AssemblyReference.cache
+D:\Projects\OneRegister\OneRegister.Security\obj\Debug\net6.0\OneRegister.Security.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\OneRegister\OneRegister.Security\obj\Debug\net6.0\OneRegister.Security.AssemblyInfoInputs.cache
+D:\Projects\OneRegister\OneRegister.Security\obj\Debug\net6.0\OneRegister.Security.AssemblyInfo.cs
+D:\Projects\OneRegister\OneRegister.Security\obj\Debug\net6.0\OneRegister.Security.csproj.CoreCompileInputs.cache
+D:\Projects\OneRegister\OneRegister.Security\obj\Debug\net6.0\OneRegister.Security.dll
+D:\Projects\OneRegister\OneRegister.Security\obj\Debug\net6.0\refint\OneRegister.Security.dll
+D:\Projects\OneRegister\OneRegister.Security\obj\Debug\net6.0\OneRegister.Security.pdb
+D:\Projects\OneRegister\OneRegister.Security\obj\Debug\net6.0\ref\OneRegister.Security.dll

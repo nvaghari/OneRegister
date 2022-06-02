@@ -1,0 +1,24 @@
+﻿@model OneRegister.Web.Models.Home.ResultViewModel
+@{
+    ViewData["Title"] = "Action Result";
+}
+@if (Model.IsSuccess)
+{
+    <div class="jumbotron jumbotron-fluid bg-light">
+        <div class="container">
+            <h1 class="display-4 text-success">Good Job, @Model.Action is done</h1>
+            <p class="lead text-success">@Model.Description</p>
+        </div>
+    </div>
+}
+else
+{
+    <div class="jumbotron jumbotron-fluid bg-light">
+        <div class="container">
+            <h1 class="display-4 text-danger">Oops!,@Model.Action encountered error</h1>
+            <p class="lead text-danger">@Model.Description</p>
+        </div>
+    </div>
+}
+
+

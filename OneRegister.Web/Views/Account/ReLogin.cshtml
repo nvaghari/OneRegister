@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "Not Authorized";
+}
+
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-lg-6">
+            <div>
+                <img class="w-100" src="~/pic/billboard/server_down.png" />
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="mt-lg-5">
+                <h2 class="billboard-title-success">Oops,</h2>
+                <hr />
+                <p>
+                    it seems your session is expired or you haven't logged in. Please login first to use all features and functionalities
+                </p>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div>
+                        @Html.ActionLink("I got it", "Login", "Account", null, new { @class = "btn btn-outline-primary", role = "button" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

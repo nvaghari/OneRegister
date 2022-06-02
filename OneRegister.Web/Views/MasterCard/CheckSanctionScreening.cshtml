@@ -1,0 +1,119 @@
+﻿@model OneRegister.Web.Models.MasterCard.CheckSanctionViewModel
+@{
+    ViewData["Title"] = "Sanction Screening Check";
+}
+@section Styles{
+    <link href="~/lib/json-viewer/jquery.json-viewer.css" type="text/css" rel="stylesheet" />
+    <style>
+        div.match-item {
+            border-bottom: 1px solid rgb(0 0 0 / 8%);
+            margin-bottom: 15px;
+            overflow-wrap: break-word;
+        }
+        p.match-value {
+            font-weight: bold;
+        }
+        #match-container {
+            border: solid 1px #6c63ff;
+            padding: 15px;
+        }
+
+        .match-container-header {
+            display: flex;
+            align-items: center;
+        }
+
+        #sanction-result-container {
+            max-height: 312px;
+            overflow-y: auto;
+            border: solid 1px #6c63ff;
+        }
+
+        pre#sanction-result {
+            border-radius: 5px;
+            margin: 2px;
+        }
+
+        .status-container-item ul li {
+            position: relative;
+        }
+
+        .status-container-item ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .connector {
+            min-width: 14px;
+            background: transparent;
+            border: 1px solid #bfbfbf;
+            border-top: none;
+            border-right: none;
+            min-height: 15px;
+            position: absolute;
+            top: -2px;
+            left: -14px;
+        }
+
+        p.match-label {
+            color: gray;
+            margin-bottom: 0;
+        }
+
+        p {
+            overflow-wrap: break-word;
+        }
+    </style>
+}
+
+<div class="row my-3">
+    <div class="col">
+        <h4 class="text-dark">Sanction Screening Check (Demo)</h4>
+    </div>
+</div>
+
+<div class="status-container d-flex flex-nowrap my-3
+      flex-column     justify-content-xs-start
+      flex-sm-row  justify-content-sm-around
+      flex-md-row     justify-content-md-around
+      flex-lg-row     justify-content-lg-around ">
+    <div class="status-container-item ">
+        <ul class="legalAndRegulatoryWarningList">
+            <li class="d-flex align-items-center font-weight-bold"> <i class="mr-1 header-icon fa-2x fas fa-question-circle text-muted"></i> Legal and regulatory warning</li>
+        </ul>
+    </div>
+    <div class="status-container-item ">
+        <ul class="politicallyExposedPersonList">
+            <li class="d-flex align-items-center font-weight-bold"><i class="mr-1 header-icon fa-2x fas fa-question-circle text-muted"></i> Politicaly exposed person</li>
+        </ul>
+    </div>
+    <div class="status-container-item ">
+        <ul class="sanctionList">
+            <li class="d-flex align-items-center font-weight-bold"><i class="mr-1 header-icon fa-2x fas fa-question-circle text-muted"></i> Sanction</li>
+        </ul>
+    </div>
+</div>
+<div class="row m-1">
+    <div class="col-md-6">
+        <form id="mainForm" asp-antiforgery="true">
+            <form-group-input target="FirstName" />
+            <form-group-input target="LastName" />
+            <form-group-input target="BirthDay" type="Date" />
+            <div class="form-group d-flex justify-content-end">
+                <a class="btn btn-warning pull-right" id="inquiryBtn" role="button">Inquiry</a>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6" id="sanction-result-container" style="max-height: 312px; overflow-y: auto; border: solid 1px #6c63ff;">
+        <pre id="sanction-result"></pre>
+    </div>
+</div>
+<div id="match-container" class="m-1">
+
+</div>
+
+
+@section Scripts{
+    <script type="text/javascript" src="~/lib/json-viewer/jquery.json-viewer.js"></script>
+    <script type="text/javascript" src="~/js/mastercard/checkSanction.js" asp-append-version="true"></script>
+}

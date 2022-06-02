@@ -1,0 +1,331 @@
+﻿@model OneRegister.Web.Models.MerchantRegistration.MerchantCommissionViewModel
+
+<div class="modal-content">
+    <div class="modal-header bg-primary text-light">
+        <h5 class="modal-title">Appendix C (Retailer Commission Structure)
+        <span class="d-print-none">
+            <a target="_blank" href="@("GetCommissionForPrint?mid="+Model.Mid.ToString())"><i class="fas fa-print text-light"></i></a>
+        </span></h5>
+        <button type="button" class="close text-light d-print-none" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <!--Setup cost-->
+            <div class="row m-md-2">
+                <div class="col">
+                    <h5 class="text-primary">A. Setup Cost</h5>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td>Setup costs (one-time)</td>
+                                <td colspan="2" class="font-weight-bold"><span class="badge badge-primary">@Model.Display(Model.Setup_OneTime)</span></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">Maintenance Fee</td>
+                                <td>Monthly</td>
+                                <td>Annual</td>
+                            </tr>
+                            <tr>
+                                <td class="font-weight-bold"><span class="badge badge-primary">@Model.Display(Model.Setup_Monthly)</span></td>
+                                <td class="font-weight-bold"><span class="badge badge-primary">@Model.Display(Model.Setup_Annual)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!--EDC Terminal-->
+            <div class="row m-md-2">
+                <div class="col">
+                    <h5 class="text-primary">B. EDC terminal cost (only applicable to physical Retailer)</h5>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td rowspan="5">EDC terminal</td>
+                                <td>Installation Fee</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.EDC_Installation)</span></td>
+                            </tr>
+                            <tr>
+                                <td>Monthly rental for each unit</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.EDC_Monthly)</span></td>
+                            </tr>
+                            <tr>
+                                <td>Deposit*<br />*To be refunded if returned in the same condition that Merchant received it. Otherwise, the deposit will be forfeited.</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.EDC_Deposit)</span></td>
+                            </tr>
+                            <tr>
+                                <td>Penalty for loss or damaged of each EDC terminal</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.EDC_TerminalDamage)</span></td>
+                            </tr>
+                            <tr>
+                                <td>Paper Roll Cover Broken/ Damaged</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.EDC_PaperRollDamage)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!--Terminal Type-->
+            <div class="row m-md-2">
+                <div class="col">
+                    <h5 class="text-primary">C. Terminal Type</h5>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td rowspan="3">Terminal Type</td>
+                                <td>Sunmi</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.TerminalType_Sunmi)</span></td>
+                            </tr>
+                            <tr>
+                                <td>Newland GPRS</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.TerminalType_NewlandGPRS)</span></td>
+                            </tr>
+                            <tr>
+                                <td>N6</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.TerminalType_N6)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!--Payment Terms-->
+            <!--Credit Card-->
+            <div class="row m-md-2">
+                <div class="col">
+                    <h5 class="text-primary">D. Payment terms of Net Settlement Amount</h5>
+                    <h5 class="text-primary">Credit Card</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Payment Terms</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Payment Frequency</td>
+                                <td>T + <span class="badge badge-primary">@Model.Display(Model.CreditCard_Frequency)</span> Business Days</td>
+                            </tr>
+                            <tr>
+                                <td>Payment Currency</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.CreditCard_Currency)</span></td>
+                            </tr>
+                            <tr>
+                                <td>Minimum Payout</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.CreditCard_MinPayout)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!--My Debit-->
+            <div class="row m-md-2">
+                <div class="col">
+                    <h5 class="text-primary">MyDebit</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Payment Terms</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Payment Frequency</td>
+                                <td>T + <span class="badge badge-primary">@Model.Display(Model.MyDebit_Frequency)</span> Business Days</td>
+                            </tr>
+                            <tr>
+                                <td>Payment Currency</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.MyDebit_Currency)</span></td>
+                            </tr>
+                            <tr>
+                                <td>Minimum Payout</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.MyDebit_MinPayout)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!--FPX-->
+            <div class="row m-md-2">
+                <div class="col">
+                    <h5 class="text-primary">FPX</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Payment Terms</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Payment Frequency</td>
+                                <td>T + <span class="badge badge-primary">@Model.Display(Model.FPX_Frequency)</span> Business Days</td>
+                            </tr>
+                            <tr>
+                                <td>Payment Currency</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.FPX_Currency)</span></td>
+                            </tr>
+                            <tr>
+                                <td>Minimum Payout</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.FPX_MinPayout)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!--EWallets-->
+            <div class="row m-md-2">
+                <div class="col">
+                    <h5 class="text-primary">E-wallets</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Payment Terms</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Payment Frequency</td>
+                                <td>T + <span class="badge badge-primary">@Model.Display(Model.EWallets_Frequency)</span> Business Days</td>
+                            </tr>
+                            <tr>
+                                <td>Payment Currency</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.EWallets_Currency)</span></td>
+                            </tr>
+                            <tr>
+                                <td>Minimum Payout</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.EWallets_MinPayout)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!--DuitNow QR-->
+            <div class="row m-md-2">
+                <div class="col">
+                    <h5 class="text-primary">DuitNow QR</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Payment Terms</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Payment Frequency</td>
+                                <td>T + <span class="badge badge-primary">@Model.Display(Model.DuitNowQR_Frequency)</span> Business Days</td>
+                            </tr>
+                            <tr>
+                                <td>Payment Currency</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.DuitNowQR_Currency)</span></td>
+                            </tr>
+                            <tr>
+                                <td>Minimum Payout</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.DuitNowQR_MinPayout)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!--Company Payment-->
+            <div class="row m-md-2">
+                <div class="col">
+                    <h5 class="text-primary">E. Company Payment System and Merchant Discount Rate (MDR)</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Payment Method</th>
+                                <th>Description</th>
+                                <th>Merchant Discount Rate (MDR)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="4">Credit Card</td>
+                                <td>VISA (POS)</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.CreditCard_Visa_POS_P, Model.CreditCard_Visa_POS_M)</span></td>
+                            </tr>
+                            <tr>
+                                <td>MasterCard (POS)</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.CreditCard_MasterCard_POS_P, Model.CreditCard_MasterCard_POS_M)</span></td>
+                            </tr>
+                            <tr>
+                                <td>VISA (eComm)</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.CreditCard_Visa_EComm_P, Model.CreditCard_Visa_EComm_M)</span></td>
+                            </tr>
+                            <tr>
+                                <td>MasterCard (eComm)</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.CreditCard_MasterCard_EComm_P, Model.CreditCard_MasterCard_EComm_M)</span></td>
+                            </tr>
+                            <tr>
+                                <td>MyDebit</td>
+                                <td>All Participating Banks (POS)</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.MyDebit_All_POS_P, Model.MyDebit_All_POS_M)</span></td>
+                            </tr>
+                            <tr>
+                                <td>FPX</td>
+                                <td>OnlineBanking</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.FPX_Online_P, Model.FPX_Online_M)</span></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="7">E-wallets</td>
+                                <td>MobilityOne eM-ONEi</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.EWallets_M1_P, Model.EWallets_M1_M)</span></td>
+                            </tr>
+                            <tr>
+                                <td>Boost</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.EWallets_Boost_P, Model.EWallets_Boost_M)</span></td>
+                            </tr>
+                            <tr>
+                                <td>Touch 'n Go eWallet</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.EWallets_TNG_P, Model.EWallets_TNG_M)</span></td>
+                            </tr>
+                            <tr>
+                                <td>Alipay (China)</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.EWallets_Alipay_CN_P, Model.EWallets_Alipay_CN_M)</span></td>
+                            </tr>
+                            <tr>
+                                <td>WeChat Pay (China)</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.EWallets_WeChat_CN_P, Model.EWallets_WeChat_CN_M)</span></td>
+                            </tr>
+                            <tr>
+                                <td>WeChat Pay (Malaysia)</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.EWallets_WeChat_MY_P, Model.EWallets_WeChat_MY_M)</span></td>
+                            </tr>
+                            <tr>
+                                <td>Maybank QRPay</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.EWallets_MayBank_QR_P, Model.EWallets_MayBank_QR_M)</span></td>
+                            </tr>
+                            <tr>
+                                <td>DuitNow QR</td>
+                                <td>DuitNow QR</td>
+                                <td><span class="badge badge-primary">@Model.Display(Model.DuitNowQR_DuitNowQR_P, Model.DuitNowQR_DuitNowQR_M)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--Remark-->
+            <div class="row m-md-2">
+                <div class="col">
+                    <div><strong>Remark:&nbsp;</strong>@Model.Remark</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer d-print-none">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+    </div>
+</div>

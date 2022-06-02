@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "Import Agropreneur";
+}
+
+@section Styles{
+    <link href="~/lib/dataTables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/lib/dataTables/responsive/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-12">
+        <h4 class="text-primary">Import</h4>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-9">
+        <div class="text-muted font-weight-lighter ml-2">
+            Please use <a href="~/files/AGPSample.xlsx">Template</a> as a sample.
+        </div>
+        <form asp-action="">
+            <div class="form-inline">
+                <div class="form-group mx-sm-3 mb-2">
+                    <input type="file" class="form-control-file" id="fileInput">
+                </div>
+                <input type="button" class="btn btn-outline-primary mr-sm-2 mb-2" value="Preview" id="btnPreview" />
+                <input type="button" class="btn btn-outline-warning mb-2" disabled="disabled" value="Import" id="btnImport" />
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <table id="importPreviewGrid" class="table table-bordered dt-responsive nowrap w-100">
+            <thead class="bg-primary text-light">
+                <tr>
+                    <th>Plot No</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Identity Type</th>
+                    <th>Identity Number</th>
+                    <th>Company</th>
+                    <th>SsmNo</th>
+                    <th>MailingAddress</th>
+                    <th>DateOfBirth</th>
+                    <th>Gender</th>
+                    <th>Nationality</th>
+                    <th>MobileNo</th>
+                    <th>EmailAddress</th>
+                    <th>Designation</th>
+                    <th>Industry</th>
+                    <th>NatureOfBusiness</th>
+                    <th>PurposeOfTransaction</th>
+                    <th>CompanyBankAccount</th>
+                    <th>AccountNo</th>
+                    <th>EntryDate</th>
+                    <th>VisaExpiry</th>
+                    <th>PLKSExpiry</th>
+                    <th>TermOfService</th>
+                    <th>Description</th>
+                    <th>IsValid</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_DataTableScripts"); }
+    <script type="text/javascript" src="~/js/agp/agpImport.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-9">
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-primary" role="alert">
+                    Compulsory: Please choose your school and year first before proceed to add/modify Class or Homeroom.
+                </div>
+            </div>
+        </div>
+        <div class="accordion" id="schoolManagementAccordion">
+            <div class="card">
+                <div class="card-header" id="schoolCard">
+                    <div class="row">
+                        <div class="col">
+                            <select id="school" class="form-control">
+                                <option>--Select School--</option>
+                            </select>
+                            
+                        </div>
+                        <div class="col">
+                            <div class="float-right">
+                                <button id="schoolEdit" class="btn btn-outline-warning" data-toggle="collapse" data-target="#collapseSchool">Modify</button>
+                                <button id="schoolAdd" class="btn btn-outline-primary" data-toggle="collapse" data-target="#collapseSchool">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="collapseSchool" class="collapse" data-parent="#schoolManagementAccordion">
+                    <div class="card-body">
+                        <div class="form-inline">
+                            <div class="col-md-9">
+                                <input id="schoolName" type="text" class="form-control w-100 m-2" placeholder="School Name" />
+                            </div>
+                            <div class="col-md-3">
+                                <button id="schoolSubmit" class="btn btn-outline-secondary m-2" data-toggle="collapse" data-target="#collapseSchool">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="yearCard">
+                    <div class="row">
+                        <div class="col">
+                            <select id="year" class="form-control">
+                                <option>--Select Year--</option>
+                            </select>
+                        </div>
+                        <div class="col">
+
+                        </div>
+                    </div>
+                </div>
+                <div id="collapseYear" class="collapse" data-parent="#schoolManagementAccordion">
+                    <div class="card-body">
+                        There is no option to edit Year
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="classCard">
+                    <div class="row">
+                        <div class="col">
+                            <select id="class" class="form-control">
+                                <option>--Select Class--</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <div class="float-right">
+                                <button id="classEdit" class="btn btn-outline-warning" data-toggle="collapse" data-target="#collapseClass">Modify</button>
+                                <button id="classAdd" class="btn btn-outline-primary" data-toggle="collapse" data-target="#collapseClass">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="collapseClass" class="collapse" data-parent="#schoolManagementAccordion">
+                    <div class="card-body">
+                        <div class="form-inline">
+                            <div class="col-md-5">
+                                <input id="className" type="text" class="form-control w-100 m-2" placeholder="Class Name" />
+                            </div>
+                            <div class="col-md-5">
+                                <input id="classLabel" type="text" class="form-control w-100 m-2" placeholder="Class Label" />
+                            </div>
+                            <div class="col-md-2">
+                                <button id="classSubmit" class="btn btn-outline-secondary m-2" data-toggle="collapse" data-target="#collapseClass">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="homeRoomCard">
+                    <div class="row">
+                        <div class="col">
+                            <select id="homeRoom" class="form-control">
+                                <option>--Select HomeRoom--</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <div class="float-right">
+                                <button id="homeEdit" class="btn btn-outline-warning" data-toggle="collapse" data-target="#collapseHomeRoom">Modify</button>
+                                <button id="homeAdd" class="btn btn-outline-primary" data-toggle="collapse" data-target="#collapseHomeRoom">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="collapseHomeRoom" class="collapse" data-parent="#schoolManagementAccordion">
+                    <div class="card-body">
+                        <div class="form-inline">
+                            <div class="col-md-9">
+                                <input id="homeName" type="text" class="form-control w-100 m-2" placeholder="Home Room" />
+                            </div>
+                            <div class="col-md-3">
+                            <button id="homeSubmit" class="btn btn-outline-secondary m-2" data-toggle="collapse" data-target="#collapseHomeRoom">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/student/schoolManagement.js" type="text/javascript" asp-append-version="true"></script>
+}

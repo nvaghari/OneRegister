@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Internal Error";
+}
+
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-lg-6">
+            <div>
+                <img class="w-100" src="~/pic/billboard/sorry.png" />
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="mt-lg-5">
+                <h2 class="billboard-title-success">So sorry for this but,</h2>
+                <hr />
+                <p>
+                   some <span class="text-danger">Internal Error</span> is occurred, we are trying hard that you do not see this page a lot but at this moment please contact us and let us fix the error, thank you.
+                </p>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div>
+                        @Html.ActionLink("Ok, mistakes might happen sometimes", "Index", "Home", null, new { @class = "btn btn-outline-primary", role = "button" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,582 @@
+﻿@model OneRegister.Web.Models.MerchantRegistration.MerchantRegisterViewModel
+@using OneRegister.Data.Entities.MerchantRegistration
+@inject OneRegister.Security.Contract.IPermissionRepository _permissionRepo;
+@{
+    ViewData["Title"] = "Merchant Registration";
+}
+@section Styles{
+<link href="~/lib/select/css/select2.min.css" rel="stylesheet" />
+<link href="~/lib/select-boot/select2-bootstrap4.min.css" rel="stylesheet" />
+}
+<input asp-for="Info.Mid" type="hidden" />
+<input type="hidden" id="@nameof(Model.MerchantState)" value="@((int)Model.MerchantState)" />
+<!--/// Form Header -->
+<div class="row mb-3 bg-primary pt-3 pb-3">
+    <div class="col-sm-4 font-weight-bold text-light">
+        @if (string.IsNullOrEmpty(Model?.FormNo))
+        {
+            <div><span class="text-warning mr-2">Form No:</span><span id="formIdSpan">[not registered]</span></div>
+        }
+        else
+        {
+            <div><span class="text-warning mr-2">Form No:</span><span id="formIdSpan">@Model.FormNo</span></div>
+        }
+    </div>
+    <div class="col-sm-4 font-weight-bold text-light">
+        @if (string.IsNullOrEmpty(Model?.Info?.RegisteredBusiness))
+        {
+            <div><span class="text-warning mr-2">Name:</span><span id="formNameSpan"></span></div>
+        }
+        else
+        {
+            <div><span class="text-warning mr-2">Name:</span><span id="formNameSpan">@Model.Info.RegisteredBusiness</span></div>
+        }
+    </div>
+    <div class="col-sm-4 font-weight-bold text-light">
+        @if (_permissionRepo.IsUserAuthorised(User, Guid.Parse("8B01A4A4-765E-407D-A6AD-684E92891737")))
+        {
+            <div><span class="text-warning mr-2">Status:</span><span>@Model.MerchantStatus</span></div>
+        }
+        else
+        {
+            <div><span class="text-warning mr-2">Status:</span><span>@Model.MerchantStatusUser</span></div>
+        }
+    </div>
+</div>
+<!-- Form Header ///-->
+<!--/// Main Form -->
+<div class="row">
+    <div class="col-12">
+        @if (Model.MerchantStatus == MerchantStatus.Rejected || Model.MerchantStatus == MerchantStatus.Inadequate)
+        {
+            var rejectList = Model.Reject.Remark.Split(";");
+            <div class="alert-warning my-3 p-2">
+                Respond from MobilityOne Team:
+                <p>
+                    <ul class="rejection-remark-list">
+                        @foreach (var reason in rejectList)
+                        {
+                            <li>@reason</li>
+                        }
+                    </ul>
+                </p>
+            </div>
+        }
+        else if (_permissionRepo.IsUserAuthorised(User, Guid.Parse("93F95642-AB53-424D-8B70-A67F1965D267")) && !string.IsNullOrEmpty(Model.Reject?.Remark))
+        {
+            var rejectList = Model.Reject.Remark.Split(";");
+            <div class="alert-warning my-3 p-2">
+                Respond from MobilityOne Team
+                <p>
+                    <ul class="rejection-remark-list">
+                        @foreach (var reason in rejectList)
+                        {
+                            <li>@reason</li>
+                        }
+                    </ul>
+                </p>
+            </div>
+        }
+        <div id="merchantRegisterWizard">
+            <!-- /// Info -->
+            <div class="card">
+                <div class="card-header" id="headerInfo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseInfo">
+                            Application Information
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseInfo" class="collapse" aria-labelledby="headerInfo" data-parent="#merchantRegisterWizard">
+                    <div class="card-body">
+                        <form id="formInfo">
+                            <div class="form-row">
+                                <div class="col">
+                                    <div id="infoAlert" class="d-none"></div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6 p-md-4">
+                                    <form-group-input target="Info.RegisteredBusiness" />
+                                    <form-group-input target="Info.BusinessNo" />
+                                    <form-group-input multiline="3" target="Info.Address" />
+                                    <form-group-select for="Info.Country" list="Model.Countries" />
+                                    <form-group-radio target="Info.BusinessType" />
+                                    <form-group-input target="Info.Principal" />
+                                    <form-group-input target="Info.ProductType" />
+                                    <form-group-input target="Info.TickectSize" type="Number" />
+                                    <form-group-input target="Info.MonthlyTurnover" type="Number" />
+                                </div>
+                                <div class="col-md-6 p-md-4">
+                                    <form-group-input target="Info.SstId" />
+                                    <form-group-input target="Info.Town" />
+                                    <form-group-select for="Info.AreaState" list="Model.CountryStates" />
+                                    <form-group-input target="Info.PostCode" />
+                                    <form-group-input target="Info.OperatingDaysHours" />
+                                    <form-group-select for="Info.SalesPersonId" list="Model.SalesPeople" disabled=Model.Info.SalesPersonId.HasValue />
+                                    <form-group-input target="Info.DeliveryTime" />
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6 p-md-4">
+                                    <form-group-input target="Info.ContactName" readonly="true" />
+                                    <form-group-input target="Info.MobileNo" readonly="true" />
+                                    <form-group-input target="Info.Email" readonly="true" />
+                                </div>
+                                <div class="col-md-6 p-md-4">
+                                    <form-group-select for="Info.Designation" list="Model.DesignationList" />
+                                    <form-group-input target="Info.TelNo" />
+                                    <form-group-input target="Info.FaxNo" />
+                                </div>
+                            </div>
+                            @if (Model.IsEditable)
+                            {
+                                <div class="form-row">
+                                    <div class="col-12">
+                                        <div class="float-right">
+                                            <a class="btn btn-warning" id="infoBtnSave" role="button">Save and Next</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Info /// -->
+            <!-- /// Services -->
+            <div class="card">
+                <div class="card-header" id="headerServices">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseServices">
+                            Application Types
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseServices" class="collapse" aria-labelledby="headerInfo" data-parent="#merchantRegisterWizard">
+                    <div class="card-body">
+                        <form id="formServices">
+                            <div class="form-row">
+                                <div class="col">
+                                    <div id="servicesAlert" class="d-none"></div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md">
+                                    <div>
+                                        ONEPay Prepaid VAS Services Application (Retailer)
+                                    </div>
+                                    <img src="~/pic/logo/OnePay.png" class="img-fluid my-3 pic-merchant-service" />
+                                    <form-check target="Services.OnePay_VasOnM1Device" SimpleBinding=true />
+                                    <form-check target="Services.OnePay_VasOnM1WebPortal" SimpleBinding=true />
+                                    <form-check target="Services.OnePay_VasOnM1SmartphoneApp" SimpleBinding=true />
+                                    <form-check target="Services.OnePay_VasOnApi" SimpleBinding=true />
+                                    <form-check target="Services.OnePay_VasOnRetailerDevice" SimpleBinding=true />
+                                    <form-check target="Services.OnePay_AxiataAspirasi" SimpleBinding=true />
+                                    <form-check target="Services.OnePay_CreditCardOnDevicePaydee" SimpleBinding=true />
+                                    <form-check target="Services.OnePay_CreditCardOnDeviceUms" SimpleBinding=true />
+                                    <form-check target="Services.OnePay_Emonei" SimpleBinding=true />
+                                    <form-check target="Services.OnePay_Ewallets" SimpleBinding=true />
+                                    <form-check target="Services.OnePay_MyDebit" SimpleBinding=true />
+                                    <form-check target="Services.OnePay_DuitNowQR" SimpleBinding=true />
+                                </div>
+                                <div class="col-md">
+                                    <div>
+                                        M1Pay Payment Processing Services Application (eCommerce Merchant)
+                                    </div>
+                                    <img src="~/pic/logo/M1Pay.png" class="img-fluid my-3 pic-merchant-service" />
+                                    <form-check target="Services.M1Pay_CreditCardUms" SimpleBinding=true />
+                                    <form-check target="Services.M1Pay_Emonei" SimpleBinding=true />
+                                    <form-check target="Services.M1Pay_Ewallets" SimpleBinding=true />
+                                    <form-check target="Services.M1Pay_Fpx" SimpleBinding=true />
+                                    <form-check target="Services.M1Pay_Alipay" SimpleBinding=true />
+                                </div>
+                            </div>
+                            @if (Model.IsEditable)
+                            {
+                                <div class="form-row">
+                                    <div class="col-12">
+                                        <div class="float-right">
+                                            <a class="btn btn-warning" id="servicesBtnSave" role="button">Save and Next</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Services /// -->
+            <!--/// Owner Card-->
+            <div class="card">
+                <div class="card-header" id="headerOwners">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOwner">
+                            Company Owner / Directors
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseOwner" class="collapse" data-parent="#merchantRegisterWizard">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div id="ownerMasterAlert" class="d-none"></div>
+                                </div>
+                            </div>
+                            @if (Model.IsEditable)
+                            {
+                                <div class="form-row">
+                                    <div class="col-12">
+                                        <div class="float-right">
+                                            <a id="ownerCallToAddBtn" class="btn btn-outline-primary m-2" role="button"><i class="fa fa-plus pr-2"></i>Add</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                            <div class="form-row">
+                                <div class="col-12">
+                                    <table id="ownerTable" class="table table-striped table-responsive-md">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Id</th>
+                                                <th>Name</th>
+                                                <th>Designation</th>
+                                                <th>IC No / Passport</th>
+                                                <th>Mobile No</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                            @if (Model.IsEditable)
+                            {
+                                <div class="form-row">
+                                    <div class="col-12">
+                                        <div class="float-right">
+                                            <input type="button" class="btn btn-warning" id="ownerContinueBtn" value="Save and Next" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--Owner Card ///-->
+            <!--/// Outlets -->
+            <div class="card">
+                <div class="card-header" id="headerOutlet">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOutlet">
+                            Physical Channel - Main Outlet Details
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseOutlet" class="collapse" data-parent="#merchantRegisterWizard">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div id="outletMasterAlert" class="d-none"></div>
+                                </div>
+                            </div>
+                            @if (Model.IsEditable)
+                            {
+                                <div class="form-row">
+                                    <div class="col">
+                                        <div class="float-right">
+                                            <a id="outletCallToAddBtn" class="btn btn-outline-primary m-2" role="button"><i class="fa fa-plus pr-2"></i>Add</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                            <div class="form-row">
+                                <div class="col">
+                                    <table id="outletTable" class="table table-striped table-responsive-md">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Id</th>
+                                                <th>Name</th>
+                                                <th>Town</th>
+                                                <th>Tel</th>
+                                                <th>Contact Person</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                            @if (Model.IsEditable)
+                            {
+                                <div class="form-row">
+                                    <div class="col">
+                                        <div class="float-right">
+                                            <input type="button" class="btn btn-warning" id="outletContinueBtn" value="Save and Next" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Outlets ///-->
+            <!--/// Bank Account -->
+            <div class="card">
+                <div class="card-header" id="headerBank">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseBank">
+                            Application Bank Account Details
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseBank" class="collapse" data-parent="#merchantRegisterWizard">
+                    <div class="card-body">
+                        <form id="formBank">
+                            <div class="form-row">
+                                <div class="col">
+                                    <div id="bankAlert" class="d-none"></div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <form-group-select for="Bank.BankName" list="Model.BankNameList" />
+                                    <form-group-input target="Bank.AccountName" />
+                                    <form-group-input target="Bank.AccountNo" />
+                                </div>
+                                <div class="col-md-6">
+                                    <form-group-input multiline="4" target="Bank.BankAddress" />
+                                    <form-group-radio target="Bank.BankPromoAgree" />
+                                </div>
+                            </div>
+                            @if (Model.IsEditable)
+                            {
+                                <div class="form-row">
+                                    <div class="col">
+                                        <div class="float-right">
+                                            <input type="button" class="btn btn-warning" id="bankSaveBtn" value="Save and Next" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Bank Account ///-->
+            <!--/// Channel -->
+            <div class="card">
+                <div class="card-header" id="headerChannel">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseChannel">
+                            Internet Channel / Web Store Details
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseChannel" class="collapse" data-parent="#merchantRegisterWizard">
+                    <div class="card-body">
+                        <form id="formChannel">
+                            <div class="form-row">
+                                <div class="col">
+                                    <div id="channelAlert" class="d-none"></div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <form-group-input target="Channel.ChannelAddress" />
+                                    <form-group-input target="Channel.ChannelUrl" />
+                                </div>
+                                <div class="col-md-6">
+                                    <form-group-input target="Channel.ChannelEmail" />
+                                </div>
+                            </div>
+                            @if (Model.IsEditable)
+                            {
+                                <div class="form-row">
+                                    <div class="col">
+                                        <div class="float-right">
+                                            <input type="button" class="btn btn-warning" id="channelSaveBtn" value="Save and Next" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Channel ///-->
+            <!--/// Upload Files -->
+            <div class="card">
+                <div class="card-header" id="headerFile">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFile">
+                            Upload Documents
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseFile" class="collapse" data-parent="#merchantRegisterWizard">
+                    <div class="card-body">
+                        <form id="formFile">
+                            <div class="form-row">
+                                <div class="col">
+                                    <div id="fileAlert" class="d-none"></div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-xl-6">
+                                    <form-group-file target="Files.CompanyRegistrationSearch" link="@Model.Files?.CompanyRegistrationSearchUrl" handler="MerchantRegister.fileHandler" />
+                                    <form-group-file target="Files.IdentificationDocuments" link="@Model.Files?.IdentificationDocumentsUrl" handler="MerchantRegister.fileHandler" />
+                                    <form-group-file target="Files.BankStatement" link="@Model.Files?.BankStatementUrl" handler="MerchantRegister.fileHandler" />
+                                    <form-group-file target="Files.ApplicantPhoto" link="@Model.Files?.ApplicantPhotoUrl" handler="MerchantRegister.fileHandler" />
+                                    <form-group-file target="Files.CtosOfBoard" link="@Model.Files?.CtosOfBoardUrl" handler="MerchantRegister.fileHandler" />
+                                    <form-group-file target="Files.OtherDocument" link="@Model.Files?.OtherDocumentUrl" handler="MerchantRegister.fileHandler" />
+                                </div>
+                            </div>
+                            @if (Model.IsEditable)
+                            {
+                                <div class="form-row">
+                                    <div class="col">
+                                        <div class="float-right">
+                                            <input type="button" class="btn btn-warning" id="fileSaveBtn" value="Next" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--Upload Files ///-->
+            <!--/// TC-->
+            <div class="card">
+                <div class="card-header" id="headerTerms">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTerms">
+                            Terms and Conditions
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTerms" class="collapse" data-parent="#merchantRegisterWizard">
+                    <div class="card-body">
+                        <form id="formTerms">
+                            <div class="form-row">
+                                <div class="col">
+                                    <div id="termsAlert" class="d-none"></div>
+                                </div>
+                            </div>
+                            <vc:merchant-commission merchant-id=@Model.Id></vc:merchant-commission>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div>
+                                        By clicking the button “I Agree”, registering, accessing or using the Services, APPLICANT enters into a legally binding agreement with MobilityOne Sdn Bhd (“COMPANY’) which will take effect on the last date on which the Agreement is executed (“Effective Date”). APPLICANT agrees to accept the <a href="~/files/tc/MerchantPortal_v8.pdf" class="btn-link" target="_blank">Terms and Conditions</a> set out in this Agreement including its schedules and appendices, and certifies that all information contained in this Application Form and other documentation, submitted in support of this Agreement are complete, true and correct.
+                                        <br />
+                                        APPLICANT also authorizes COMPANY and any other 3rd party as appointed by the COMPANY to obtain credit information from CTOS or any credit reporting agencies, financial institutions or any other relevant authorities for purpose of evaluating APPLICANT’s credit worthiness and verifying the information provided by APPLICANT
+                                    </div>
+                                    <div class="custom-control custom-checkbox my-2">
+                                        <input type="checkbox" class="custom-control-input" id="tcCheck">
+                                        <label class="custom-control-label" for="tcCheck">
+                                            I Agree
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            @if (Model.IsEditable)
+                            {
+                                <div class="form-row">
+                                    <div class="col">
+                                        <div class="float-right">
+                                            <input type="button" class="btn btn-warning" id="termSaveBtn" value="Next" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--TC ///-->
+        </div>
+    </div>
+</div>
+<!-- Main Form ///-->
+<!--/// Form Footer -->
+<div class="row mt-3 bg-primary p-2">
+    <div class="col">
+        <div class="float-right">
+            @if (Model.IsEditable && _permissionRepo.IsUserAuthorised(User, Guid.Parse("E8EE591A-1068-4546-9F59-9267E6C0A46D")))
+            {
+                <input id="completeBtn" type="button" value="Complete" class="btn btn-outline-light" />
+            }
+            @if (_permissionRepo.IsUserAuthorised(User, Guid.Parse("9B15A31A-38C2-4600-BE5D-F684263444C8")))
+            {
+                <input id="rejectBtn" type="button" value="Reject" class="btn btn-outline-light" />
+            }
+            @if (_permissionRepo.IsUserAuthorised(User, Guid.Parse("B308146A-0288-49A1-BAA1-B5BEA4A08895")))
+            {
+                <input id="approveBtn" type="button" value="Approve" class="btn btn-outline-light" />
+            }
+            @if (_permissionRepo.IsUserAuthorised(User, Guid.Parse("893F73A2-0679-4D57-B20D-7CC14B6AAC88")))
+            {
+                <input id="acceptBtn" type="button" value="Accept" class="btn btn-outline-light" />
+            }
+            @if (_permissionRepo.IsUserAuthorised(User, Guid.Parse("3CA8C560-F9B0-4957-BE7E-F343702F10EB")))
+            {
+                <input id="commissionBtn" type="button" value="Commission" class="btn btn-outline-light" />
+            }
+        </div>
+    </div>
+</div>
+<!-- Form Footer ///-->
+<!--/// Reject Modal -->
+@if (_permissionRepo.IsUserAuthorised(User, Guid.Parse("9B15A31A-38C2-4600-BE5D-F684263444C8")))
+{
+    <div id="rejectModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-light">
+                    <h5 class="modal-title">Merchant Inadequate or Reject Form</h5>
+                    <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <form id="formReject">
+                            <div class="form-row">
+                                <div class="col">
+                                    <div id="rejectAlert" class="d-none"></div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <form-group-input target="Reject.Remark" multiline="5" />
+                                </div>
+                                <div class="col-md-6">
+                                    <form-check target="Reject.IsPermanent" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-warning" id="rejectSaveBtn">Reject</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<!-- Reject Modal ///-->
+@section Scripts{
+    @{
+    await Html.RenderPartialAsync("_DataTableScripts");
+ }
+<script type="text/javascript" src="~/lib/select/js/select2.min.js"></script>
+<script type="text/javascript" src="~/js/merchant/MerchantRegister.js" asp-append-version="true"></script>
+}

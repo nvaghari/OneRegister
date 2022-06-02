@@ -1,0 +1,69 @@
+﻿@model  OneRegister.Web.Models.StudentRegistration.ImportViewModel
+@{
+    ViewData["Title"] = "Import";
+}
+@section Styles{
+    <link href="~/lib/dataTables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/lib/dataTables/responsive/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-12">
+        <h4 class="text-primary">Import</h4>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-9">
+        <div class="text-muted font-weight-lighter ml-2">
+            Please use <a href="~/files/StudentSampleV2.xlsx">Template</a> as a sample.
+        </div>
+        <form asp-action="">
+            <div class="form-inline">
+                <div class="form-group mx-sm-3 mb-2">
+                    <input type="file" class="form-control-file" id="fileInput">
+                </div>
+                <input type="button" class="btn btn-outline-primary mr-sm-2 mb-2" value="Preview" id="btnUpload" />
+                <input type="button" class="btn btn-outline-warning mb-2" disabled="disabled" value="Import" id="btnImport" />
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <table id="importPreviewGrid" class="table table-bordered dt-responsive nowrap w-100">
+            <thead class="bg-primary text-light">
+                <tr>
+                    <th>Service</th>
+                    <th>School</th>
+                    <th>Year</th>
+                    <th>Class</th>
+                    <th>ClassLabel</th>
+                    <th>HomeRoom</th>
+                    <th>StudentNumber</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Nationality</th>
+                    <th>IdentityType</th>
+                    <th>IC/Passport Number</th>
+                    <th>Birthday</th>
+                    <th>ParentName</th>
+                    <th>ParentPhone</th>
+                    <th>Address</th>
+                    <th>Reason</th>
+                    <th>IsValid</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_DataTableScripts"); }
+    <script type="text/javascript" src="~/js/student/studentImport.js" asp-append-version="true"></script>
+}
+

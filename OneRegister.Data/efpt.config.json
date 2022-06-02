@@ -1,0 +1,195 @@
+﻿{
+   "CodeGenerationMode": 0,
+   "ContextClassName": "MasterCardContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": "Context\/MasterCard",
+   "OutputPath": "Entities\/MasterCardGems",
+   "ProjectRootNamespace": "OneRegister.Data",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[aml].[CL_CDDActionICSource]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[aml].[CL_ServicePackage]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Entity].[CL_AddressType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Entity].[CL_Bank]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Entity].[CL_BizService]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Entity].[CL_BusinessNature]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Entity].[CL_Channel]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Entity].[CL_Country]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Entity].[CL_CountryState]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Entity].[CL_IdType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Entity].[CL_Language]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Entity].[CL_MaritalStatus]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Entity].[CL_Occupation]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Entity].[CL_PersonTitle]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Entity].[CL_RemitIdType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Entity].[CL_SenderBeneRelation]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Entity].[CL_SourceOfFunds]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Entity].[CL_TxnPurpose]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[OneReg].[CL_FormType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[OneReg].[WFForms]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[OneReg].[WFInstance]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[aml].[CDDActionDV_List]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[aml].[CDDActionDV_SetVeriStatusL1]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[aml].[CDDActionID_EKyc_SetVeriStatusL1]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[aml].[CDDActionID_ListRequests]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[aml].[CDDActionIV_ListBankAcctInfo]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[aml].[CDDActionIV_SetBankAcctStatus]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[Meta].[ErrorLog_Get]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[Meta].[GetAppVersion]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[OneReg].[Channel_ListServicePackages]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[OneReg].[GenFormNo]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[OneReg].[GetPersonInfoJson]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[OneReg].[RegCust_Init3]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[OneReg].[RegCust_SetDVStatus]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[OneReg].[RegCust_SetIVStatus]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[OneReg].[RegCust_SetKycStatus]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[OneReg].[ServicePackage_ListFieldMandatoriness]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[OneReg].[WFForms_List]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[Onfido].[SSTxn_ListRequests]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[Onfido].[SSTxn_SetResultV2]",
+         "ObjectType": 1
+      }
+   ],
+   "UiHint": "m1uat02.GEMS.dbo",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false
+}

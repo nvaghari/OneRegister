@@ -1,0 +1,25 @@
+﻿<div class="form-group">
+    <a role="button">
+        <div id="picHolder" style="text-align:center;">
+            <img id="photo" src="~/pic/unknown.jpg" width="300" height="400" class="pic-preview" />
+        </div>
+    </a>
+</div>
+<div class="modal" id="picModal" tabindex="-1" role="dialog" aria-labelledby="PictureCroppingModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Cropping Image</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pic-modal-body">
+                <div id="cropper"></div>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-crop" type="button" class="btn btn-danger">Crop Image</button>
+            </div>
+        </div>
+    </div>
+</div>

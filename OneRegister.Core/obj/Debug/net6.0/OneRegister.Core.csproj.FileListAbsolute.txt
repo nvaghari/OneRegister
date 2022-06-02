@@ -1,0 +1,12 @@
+D:\Projects\OneRegister\OneRegister.Core\bin\Debug\net6.0\OneRegister.Core.deps.json
+D:\Projects\OneRegister\OneRegister.Core\bin\Debug\net6.0\OneRegister.Core.dll
+D:\Projects\OneRegister\OneRegister.Core\bin\Debug\net6.0\OneRegister.Core.pdb
+D:\Projects\OneRegister\OneRegister.Core\obj\Debug\net6.0\OneRegister.Core.csproj.AssemblyReference.cache
+D:\Projects\OneRegister\OneRegister.Core\obj\Debug\net6.0\OneRegister.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\OneRegister\OneRegister.Core\obj\Debug\net6.0\OneRegister.Core.AssemblyInfoInputs.cache
+D:\Projects\OneRegister\OneRegister.Core\obj\Debug\net6.0\OneRegister.Core.AssemblyInfo.cs
+D:\Projects\OneRegister\OneRegister.Core\obj\Debug\net6.0\OneRegister.Core.csproj.CoreCompileInputs.cache
+D:\Projects\OneRegister\OneRegister.Core\obj\Debug\net6.0\OneRegister.Core.dll
+D:\Projects\OneRegister\OneRegister.Core\obj\Debug\net6.0\refint\OneRegister.Core.dll
+D:\Projects\OneRegister\OneRegister.Core\obj\Debug\net6.0\OneRegister.Core.pdb
+D:\Projects\OneRegister\OneRegister.Core\obj\Debug\net6.0\ref\OneRegister.Core.dll

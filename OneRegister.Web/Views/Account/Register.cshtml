@@ -1,0 +1,31 @@
+﻿@model OneRegister.Web.Models.Account.UserRegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card border-warning">
+            <div class="card-header bg-light">
+                <h5 class="text-primary">Creating System User</h5>
+            </div>
+            <div class="card-body">
+                <form id="userRegisterForm" asp-antiforgery="true">
+                    <ig-select for="OrganizationId" list="Model.Organizations" icon="fa fa-hotel" />
+                    <ig-text for="Name" icon="fa fa-id-card" />
+                    <ig-text for="Phone" icon="fa fa-phone-alt" />
+                    <ig-text for="Email" icon="fa fa-envelope" type="Email" />
+                    <ig-text for="UserName" icon="fa fa-user" />
+                    <ig-text for="Password" icon="fa fa-passport" type="Password" />
+                    <ig-text for="PasswordConfirm" icon="fa fa-passport" type="Password" />
+                    <a role="button" id="registerBtn" class="btn btn-warning float-right">Register</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript" src="~/js/account/UserRegister.js" asp-append-version="true"></script>
+}
+

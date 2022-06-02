@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "1F78WSFmfF5DopLJuU6tm/04wtxWp5ZI8cGIJsyC0o8=",
+  "Source": "OneRegister.Api.MasterCard",
+  "BasePath": "_content/OneRegister.Api.MasterCard",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

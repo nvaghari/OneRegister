@@ -1,0 +1,61 @@
+﻿@model OneRegister.Web.Models.MerchantRegistration.SalesPersonFormRegistrationViewModel
+
+@{
+    ViewData["Title"] = "Merchant Form Registration";
+}
+
+@section Styles{
+<link href="~/lib/select/css/select2.min.css" rel="stylesheet" />
+<link href="~/lib/select-boot/select2-bootstrap4.min.css" rel="stylesheet" />
+}
+<form id="registrationForm">
+    <div class="row">
+        <div class="col-md-6">
+            <form-group-input target="BusinessNo" />
+            <form-group-input target="BusinessName" />
+            <form-group-select for="MerchantAccountId" list="Model.MerchantAccounts" />
+        </div>
+    </div>
+    <div class="row d-flex">
+        <div class="mx-4">
+            <div>
+                ONEPay Prepaid VAS Services Application (Retailer)
+            </div>
+            <img src="~/pic/logo/OnePay.png" class="img-fluid my-3 pic-merchant-service" />
+            <form-check target="Services.OnePay_VasOnM1Device" />
+            <form-check target="Services.OnePay_VasOnM1WebPortal" />
+            <form-check target="Services.OnePay_VasOnM1SmartphoneApp" />
+            <form-check target="Services.OnePay_VasOnApi" />
+            <form-check target="Services.OnePay_VasOnRetailerDevice" />
+            <form-check target="Services.OnePay_AxiataAspirasi" />
+            <form-check target="Services.OnePay_CreditCardOnDevicePaydee" />
+            <form-check target="Services.OnePay_CreditCardOnDeviceUms" />
+            <form-check target="Services.OnePay_Emonei" />
+            <form-check target="Services.OnePay_Ewallets" />
+            <form-check target="Services.OnePay_MyDebit" />
+            <form-check target="Services.OnePay_DuitNowQR" />
+        </div>
+        <div class="mx-4">
+            <div>
+                M1Pay Payment Processing Services Application (eCommerce Merchant)
+            </div>
+            <img src="~/pic/logo/M1Pay.png" class="img-fluid my-3 pic-merchant-service" />
+            <form-check target="Services.M1Pay_CreditCardUms" />
+            <form-check target="Services.M1Pay_Emonei" />
+            <form-check target="Services.M1Pay_Ewallets" />
+            <form-check target="Services.M1Pay_Fpx" />
+            <form-check target="Services.M1Pay_Alipay" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="float-right">
+                <input id="saveFormBtn" type="button" class="btn btn-warning" value="Save and Go For Commission" />
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts{
+<script type="text/javascript" src="~/lib/select/js/select2.min.js"></script>
+<script type="text/javascript" src="~/js/salesperson/registration.js" asp-append-version="true"></script>
+}

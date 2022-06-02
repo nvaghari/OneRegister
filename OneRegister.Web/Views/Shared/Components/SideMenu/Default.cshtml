@@ -1,0 +1,29 @@
+﻿@model OneRegister.Web.Services.Menu.SideMenu.SideMenuComponentModel;
+
+<div class="bg-primary border-right border-primary d-print-none" id="sidebar-wrapper">
+    <div class="sidebar-heading">
+        <a class="navbar-brand text-light display-4" asp-area="" asp-controller="Home" asp-action="Index">OneRegister</a>
+        <i class="fas fa-bars fa-pull-right text-light icon-fade"></i>
+    </div>
+    <div class="list-group list-group-flush">
+        <div class="accordion" id="sideMenu">
+            @foreach (var menu in Model.TitleMenus)
+            {
+                <a href="#@menu.SanitizedName" class="list-group-item list-group-item-action bg-primary text-light" data-toggle="collapse">
+                    <i class="fas @menu.GetIcon() mr-2"></i>
+                    @menu.Name
+                    <i class="fas @menu.GetIcon() mt-1 fa-pull-right icon-fade"></i>
+                </a>
+                <div class="collapse" id="@menu.SanitizedName" data-parent="#sideMenu">
+                    <div class="list-group list-group-menu">
+                        @foreach (var subMenu in Model.GetSubMenus(menu))
+                        {
+                            <a class="list-group-item list-group-item-action sidebar-item" asp-controller="@subMenu.Controller" asp-action="@subMenu.MethodName">@subMenu.Name</a>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div style="bottom:1em" class="position-fixed ml-4 text-light text-center text-monospace">@Model.AppVersion</div>
+</div>

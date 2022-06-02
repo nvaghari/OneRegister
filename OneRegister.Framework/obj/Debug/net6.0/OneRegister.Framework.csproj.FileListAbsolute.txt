@@ -1,0 +1,15 @@
+D:\Projects\OneRegister\OneRegister.Framework\bin\Debug\net6.0\OneRegister.Framework.deps.json
+D:\Projects\OneRegister\OneRegister.Framework\bin\Debug\net6.0\OneRegister.Framework.dll
+D:\Projects\OneRegister\OneRegister.Framework\bin\Debug\net6.0\OneRegister.Framework.pdb
+D:\Projects\OneRegister\OneRegister.Framework\bin\Debug\net6.0\OneRegister.Core.dll
+D:\Projects\OneRegister\OneRegister.Framework\bin\Debug\net6.0\OneRegister.Core.pdb
+D:\Projects\OneRegister\OneRegister.Framework\obj\Debug\net6.0\OneRegister.Framework.csproj.AssemblyReference.cache
+D:\Projects\OneRegister\OneRegister.Framework\obj\Debug\net6.0\OneRegister.Framework.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\OneRegister\OneRegister.Framework\obj\Debug\net6.0\OneRegister.Framework.AssemblyInfoInputs.cache
+D:\Projects\OneRegister\OneRegister.Framework\obj\Debug\net6.0\OneRegister.Framework.AssemblyInfo.cs
+D:\Projects\OneRegister\OneRegister.Framework\obj\Debug\net6.0\OneRegister.Framework.csproj.CoreCompileInputs.cache
+D:\Projects\OneRegister\OneRegister.Framework\obj\Debug\net6.0\OneRegister.Framework.csproj.CopyComplete
+D:\Projects\OneRegister\OneRegister.Framework\obj\Debug\net6.0\OneRegister.Framework.dll
+D:\Projects\OneRegister\OneRegister.Framework\obj\Debug\net6.0\refint\OneRegister.Framework.dll
+D:\Projects\OneRegister\OneRegister.Framework\obj\Debug\net6.0\OneRegister.Framework.pdb
+D:\Projects\OneRegister\OneRegister.Framework\obj\Debug\net6.0\ref\OneRegister.Framework.dll

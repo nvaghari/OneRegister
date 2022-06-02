@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OneRegister.Api.MasterCard</name>
+    </assembly>
+    <members>
+        <member name="M:OneRegister.Api.MasterCard.Controllers.InquiryController.Patch(System.String,System.String)">
+            <summary>
+            update the status of the inquiry task and change it to be in Inprogress state. It means this inquiry will be run in the next iteration. 
+            </summary>
+            <param name="refid">this Id comes from GEMS database and most likely should be equivalent of CDDActionID</param>
+            <param name="inquiryType">at the moment all posible values for Inquiry Type are: RPP,DV,SS or IV</param>
+            <returns></returns>
+        </member>
+        <member name="M:OneRegister.Api.MasterCard.Controllers.TokenController.Get">
+            <summary>
+            before each request you need to get and provide a token and send this token as Bearer Authentication in further requests
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

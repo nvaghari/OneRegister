@@ -1,0 +1,53 @@
+﻿@model OneRegister.Web.Models.MerchantRegistration.MerchantOutletViewModel
+<div class="modal-content">
+    <div class="modal-header bg-primary text-light">
+        <h5 class="modal-title">Add New Outlet</h5>
+        <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <form id="formOutlet">
+                <div class="form-row">
+                    <div class="col">
+                        <div id="outletAlert" class="d-none"></div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <form-group-hidden target="OutletId" />
+                        <form-group-input target="OName" />
+                        <form-group-input target="OTelNo" />
+                        <form-group-input multiline="3" target="OAddress" />
+                        <form-group-radio target="OType" />
+                        <form-group-input target="OOperatingDaysHours" />
+                        <form-group-input target="ORemarks" />
+                    </div>
+                    <div class="col-md-6">
+                        <form-group-input target="OFaxNo" />
+                        <form-group-input target="OTown" />
+                        <form-group-select for="OState" list="Model.CountryStates" />
+                        <form-group-input target="OPostCode" />
+                        <form-group-input target="OLat" />
+                        <form-group-input target="OLng" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <form-group-input target="OContactPerson" />
+                        <form-group-input target="OPEmail" />
+                    </div>
+                    <div class="col-md-6">
+                        <form-group-input target="OPMobileNo" />
+                        <form-group-input target="OPTelNo" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-warning" id="outletSaveBtn">Save</button>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+D:\Projects\OneRegister\OneRegister.Test.CaseTest\bin\Debug\net6.0\CoverletSourceRootsMapping
+D:\Projects\OneRegister\OneRegister.Test.CaseTest\obj\Debug\net6.0\OneRegister.Test.CaseTest.csproj.AssemblyReference.cache
+D:\Projects\OneRegister\OneRegister.Test.CaseTest\obj\Debug\net6.0\OneRegister.Test.CaseTest.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\OneRegister\OneRegister.Test.CaseTest\obj\Debug\net6.0\OneRegister.Test.CaseTest.AssemblyInfoInputs.cache
+D:\Projects\OneRegister\OneRegister.Test.CaseTest\obj\Debug\net6.0\OneRegister.Test.CaseTest.AssemblyInfo.cs
+D:\Projects\OneRegister\OneRegister.Test.CaseTest\obj\Debug\net6.0\OneRegister.Test.CaseTest.csproj.CoreCompileInputs.cache

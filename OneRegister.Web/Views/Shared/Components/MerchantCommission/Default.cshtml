@@ -1,0 +1,19 @@
+﻿@model OneRegister.Web.ViewComponents.MerchantCommission.VCM_MerchantCommission
+
+@if (Model.HasCommission)
+{
+    <div class="alert alert-info">
+        <p>
+            The Commercial Fee Document is already provided by your Salesperson, press the link below to see in detail: 
+        </p>
+        <a id="showCommissionBtn" role="button" class="btn btn-link">Show Commission</a>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">
+        <p>
+            The Commercial Fee Document has not provided yet by Sales person, as soon as they attach the form, you can check and proceed.
+        </p>
+    </div>
+}

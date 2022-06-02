@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "jquery@3.5.1",
+      "destination": "wwwroot/lib/jquery/dist",
+      "files": [
+        "jquery.js",
+        "jquery.min.map",
+        "jquery.min.js"
+      ]
+    },
+    {
+      "library": "twitter-bootstrap@4.5.3",
+      "destination": "wwwroot/lib/bootstrap/dist/"
+    },
+    {
+      "library": "font-awesome@5.15.1",
+      "destination": "wwwroot/lib/fontawesome/"
+    },
+    {
+      "library": "select2@4.0.13",
+      "destination": "wwwroot/lib/select/"
+    },
+    {
+      "library": "croppie@2.6.5",
+      "destination": "wwwroot/lib/croppie/"
+    },
+    {
+      "library": "compressorjs@1.0.7",
+      "destination": "wwwroot/lib/compressor/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "gijgo@1.9.13",
+      "destination": "wwwroot/lib/gijgo/"
+    }
+  ]
+}

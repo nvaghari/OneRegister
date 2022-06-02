@@ -1,0 +1,108 @@
+﻿@model  OneRegister.Web.Models.StudentRegistration.ExportViewModel
+@{
+    ViewData["Title"] = "Export";
+}
+@section Styles{
+    <link href="~/lib/dataTables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/lib/dataTables/responsive/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col">
+        <h4 class="text-primary">Export</h4>
+        <small class="d-inline"><a href="~/ExportApp/Publish.html">(Install ExportPhoto App)</a></small>
+        <hr />
+    </div>
+</div>
+<form asp-action="ExportFile">
+    <div class="row">
+        <div class="col">
+            <div class="form-inline">
+                <div class="form-row my-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="school">School</label>
+                            <select id="school" name="school" class="form-control mx-sm-3">
+                                @foreach (var item in Model.Schools)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row my-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="year">Year</label>
+                            <select id="year" name="year" class="form-control mx-sm-3">
+                                @foreach (var item in Model.Years)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row my-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="class">Class</label>
+                            <select id="class" name="class" class="form-control mx-sm-3">
+                                <option value="">--Select Class--</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row my-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="homeroom">HomeRoom</label>
+                            <select id="homeroom" name="homeroom" class="form-control mx-sm-3">
+                                <option value="">--Select HomeRoom--</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row my-2">
+        <div class="col">
+            <div class="float-right">
+                <input type="button" value="Search" id="searchBtn" class="btn btn-outline-primary" />
+                <button type="submit" id="exportBtn" class="btn btn-outline-warning">Export</button>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="row">
+    <div class="col-12">
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <table id="exportPreviewGrid" class="table table-bordered dt-responsive nowrap w-100">
+            <thead class="bg-primary text-light">
+                <tr>
+                    <th>StudentNumber</th>
+                    <th>Name</th>
+                    <th>School</th>
+                    <th>Gender</th>
+                    <th>Nationality</th>
+                    <th>Picture</th>
+                    <th>ID Type</th>
+                    <th>IC/Passport</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_DataTableScripts"); }
+    <script type="text/javascript" src="~/js/student/studentExport.js" asp-append-version="true"></script>
+}
+
+
+

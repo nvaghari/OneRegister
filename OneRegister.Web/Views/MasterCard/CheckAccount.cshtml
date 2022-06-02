@@ -1,0 +1,26 @@
+﻿@model OneRegister.Web.Models.MasterCard.CheckAccountViewModel
+
+@{
+    ViewData["Title"] = "Bank Account Check";
+}
+<div class="row my-3">
+    <div class="col">
+        <h4 class="text-dark">Bank Account Check (Demo)</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <form id="mainForm" asp-antiforgery="true">
+            <form-group-input target="RefId" />
+            <form-group-input target="BankCode" />
+            <form-group-input target="AcctNo" />
+            <form-group-input target="AccountName" />
+            <a class="btn btn-warning" id="checkBtn" role="button">Check</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript" src="~/js/mastercard/checkAccount.js" asp-append-version="true"></script>
+}

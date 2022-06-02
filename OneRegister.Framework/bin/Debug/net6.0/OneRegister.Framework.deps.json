@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "OneRegister.Framework/1.0.0": {
+        "dependencies": {
+          "OneRegister.Core": "1.0.0"
+        },
+        "runtime": {
+          "OneRegister.Framework.dll": {}
+        }
+      },
+      "OneRegister.Core/1.0.0": {
+        "runtime": {
+          "OneRegister.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "OneRegister.Framework/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "OneRegister.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "Merchant Inbox";
+}
+
+@section Styles{
+    <link href="~/lib/dataTables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/lib/dataTables/responsive/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-12">
+        <h4 class="text-primary">List Of Your Applications</h4>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-12">
+        <div>
+            <table id="merchantListGrid" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+                <thead class="bg-primary text-light">
+                    <tr>
+                        <th>Id</th>
+                        <th>Form Number</th>
+                        <th>Status</th>
+                        <th>Registered Business</th>
+                        <th>Business No</th>
+                        <th>Type Of Business</th>
+                        <th>Salesperson</th>
+                        <th>Contact Name</th>
+                        <th>Designation</th>
+                        <th>Mobile</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{await Html.RenderPartialAsync("_DataTableScripts"); }
+    <script type="text/javascript" src="~/js/merchant/MerchantInbox.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "List of Students";
+}
+
+@section Styles{
+    <link href="~/lib/dataTables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/lib/dataTables/responsive/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-12">
+        <h4 class="text-primary">List Of Students</h4>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-12">
+        <div>
+            <table id="studentListGrid" class="table table-striped table-bordered dt-responsive nowrap w-100">
+                <thead class="bg-primary text-light">
+                    <tr>
+                        <th>Id</th>
+                        <th></th>
+                        <th>StudentNumber</th>
+                        <th>Name</th>
+                        <th>School</th>
+                        <th>Gender</th>
+                        <th>Nationality</th>
+                        <th>Picture</th>
+                        <th>ID Type</th>
+                        <th>IC/Passport</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{await Html.RenderPartialAsync("_DataTableScripts"); }
+    <script type="text/javascript" src="~/js/student/studentList.js" asp-append-version="true"></script>
+}

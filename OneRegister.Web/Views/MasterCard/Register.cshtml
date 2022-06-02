@@ -1,0 +1,103 @@
+﻿@model OneRegister.Web.Models.MasterCard.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Master Card Registeration";
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/lib/croppie/croppie.css" />
+    <link href="~/lib/select/css/select2.min.css" rel="stylesheet" />
+    <link href="~/lib/select-boot/select2-bootstrap4.min.css" rel="stylesheet" />
+}
+<div class="row my-3">
+    <div class="col">
+        <h4 class="text-dark">Register New MasterCard User</h4>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-9">
+        <form id="mcRegisterForm" asp-antiforgery="true">
+            <div class="form-row">
+                <div class="col-lg-6">
+                    <vc:photo-frame photo-id="facephoto"></vc:photo-frame>
+                    <ig-file for="FaceDmsFile" ref="FaceDmsId" />
+                    <ig-file for="DocPage1DmsFile" ref="DocPage1DmsId" />
+                    <ig-file for="DocPage2DmsFile" ref="DocPage2DmsId" />
+                </div>
+                <div class="col-lg-6">
+                    <ig-select icon="fa fa-grin-alt" for="ICSource" list="Model.ICSourceList" />
+                    <ig-select icon="fa fa-grin-alt" for="Channel" list="Model.ChannelList" />
+                    <ig-select icon="fa fa-grin-alt" for="ListPackages" list="Model.ListPackagesList" multiple="true"/>
+                    <ig-text icon="fa fa-hotel" for="OrgID" />
+                    <ig-text icon="fa fa-grin-alt" for="FirstName" />
+                    <ig-text icon="fa fa-grin-alt" for="LastName" />
+                    <ig-select icon="fa fa-flag" for="Nationality" list="Model.NationalityList"/>
+                    <ig-text icon="fa fa-grin-alt" for="MotherName" />
+                </div>
+            </div>
+            <div class="form-row">
+                <hr class="w-100" />
+                <div class="col-lg-6">
+                    <ig-text icon="fa fa-id-card" for="NID" />
+                    <ig-text icon="fa fa-id-card" for="PassportNo" />
+                    <ig-text icon="fa-passport" for="PassportExpiry" type="Date" />
+                    <ig-text icon="fa fa-birthday-cake" for="BirthDate" type="Date" />
+                    <ig-radio icon="fa-venus-mars" for="Gender" />
+                    <ig-text icon="fa-phone-volume" for="MobileNo" type="Number" />
+                    <ig-text icon="fa-at" for="Email" type="Email" />
+                </div>
+                <div class="col-lg-6">
+                    <ig-select icon="fa-archway" for="BankBIC" list="Model.BankBICList" />
+                    <ig-text icon="fa-user-edit" for="BankAcctNo" />
+                    <ig-text icon="fa-archway" for="BankAcctName" />
+                    <ig-select icon="fa-industry" for="OccIndustry" list="Model.OccIndustryList" />
+                    <ig-select icon="fa-user-cog" for="OccType" list="Model.OccTypeList" />
+                    <ig-text icon="fa-user-cog" for="OccPosition" />
+                    <ig-text icon="fa-building" for="OccCompany" />
+                </div>
+            </div>
+            <div class="form-row my-2">
+                <hr class="w-100" />
+                <div class="col">
+                    <form-check target="IsAddressSame" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-lg-6">
+                    <ig-text icon="fa-building" for="HomeAddress.Addr1" />
+                    <ig-text icon="fa-building" for="HomeAddress.Addr2" />
+                    <ig-text icon="fa-building" for="HomeAddress.Addr3" />
+                    <ig-text icon="fa-building" for="HomeAddress.City" />
+                    <ig-text icon="fa-building" for="HomeAddress.PostCode" />
+                    <ig-select icon="fa-building" for="HomeAddress.StateCode" list="Model.HomeAddress.StateCodeList" />
+                    <ig-select icon="fa-building" for="HomeAddress.CountryCode" list="Model.HomeAddress.CountryCodeList" />
+                </div>
+                <div class="col-lg-6">
+                    <div id="postAddressHolder" class="@(Model.IsAddressSame ? "d-none" : string.Empty)">
+                        <ig-text icon="fa-building" for="PostAddress.Addr1" />
+                        <ig-text icon="fa-building" for="PostAddress.Addr2" />
+                        <ig-text icon="fa-building" for="PostAddress.Addr3" />
+                        <ig-text icon="fa-building" for="PostAddress.City" />
+                        <ig-text icon="fa-building" for="PostAddress.PostCode" />
+                        <ig-select icon="fa-building" for="PostAddress.StateCode" list="Model.PostAddress.StateCodeList" />
+                        <ig-select icon="fa-building" for="PostAddress.CountryCode" list="Model.PostAddress.CountryCodeList" />
+                    </div>
+                </div>
+            </div>
+            <!--Buttons-->
+            <div class="form-row">
+                <div class="col">
+                    <a role="button" id="saveBtn" class="btn btn-lg btn-warning form-control">Register</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/lib/select/js/select2.min.js"></script>
+    <script type="text/javascript" src="~/lib/croppie/croppie.min.js"></script>
+    <script type="text/javascript" src="~/lib/compressor/compressor.min.js"></script>
+    <script type="text/javascript" src="~/js/shared/Imager.js"></script>
+    <script src="~/js/mastercard/register.js" asp-append-version="true"></script>
+}

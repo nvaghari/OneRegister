@@ -1,0 +1,73 @@
+﻿@model OneRegister.Domain.Model.AgropreneurRegistration.AGPRegisterModel
+@{
+    ViewData["Title"] = "Register New Agropreneur";
+}
+@section Styles{
+    <link rel="stylesheet" href="~/lib/croppie/croppie.css" />
+    <link href="~/lib/select/css/select2.min.css" rel="stylesheet" />
+    <link href="~/lib/select-boot/select2-bootstrap4.min.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-12">
+        <h4 class="text-primary">Register New Agropreneur</h4>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-9">
+        <form asp-action="Register" id="agroRegisterForm" method="post" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <a role="button">
+                            <div id="picHolder" style="text-align:center;">
+                                <img id="photo" src="~/pic/unknown.jpg" width="300" height="400" class="pic-preview" />
+                            </div>
+                        </a>
+                    </div>
+                    <ig-file for="Photo" ref="PhotoDms" />
+                    <ig-radio icon="fa-venus-mars" for="Gender" />
+                    <ig-text icon="fa-building" for="Company" />
+                    <ig-text icon="fa-edit" for="CompanyNo" />
+                    <ig-file for="IdPhoto" ref="IdPhotoDms" />
+                    <ig-text icon="fa-plane-arrival" for="EntryDate" type="Date" />
+                    <ig-text icon="fa-passport" for="VisaExpiry" type="Date" />
+                    <ig-text icon="fa-file-signature" for="PlksExpiry" type="Date" />
+                    <ig-text icon="fa-file-contract" for="TermOfService" type="Number" />
+                </div>
+                <div class="col-lg-6">
+                    <ig-text icon="fa-list-ol" for="PlotNo" />
+                    <ig-text icon="fa-user" for="FirstName" />
+                    <ig-text icon="fa-user-tie" for="LastName" />
+                    <ig-select icon="fa-passport" for="IdentityType" list="Model.IdentityTypeList" />
+                    <ig-text icon="fa-id-card" for="Identitynumber" />
+                    <ig-text icon="fa-map-marked-alt" for="MailingAddress" multi="3" />
+                    <ig-text icon="fa-calendar-day" for="Birthday" type="Date" />
+                    <ig-select icon="fa-flag" for="Nationality" list="Model.NationalityList" />
+                    <ig-text icon="fa-phone-volume" for="Mobile" type="Number" />
+                    <ig-text icon="fa-at" for="Email" type="Email" />
+                    <ig-select icon="fa-user-cog" for="Designation" list="Model.DesignationList" />
+                    <ig-select icon="fa-industry" for="Industry" list="Model.IndustryList" />
+                    <ig-select icon="fa-archway" for="BankName" list="Model.BankNameList" />
+                    <ig-text icon="fa-user-edit" for="AccountNo" />
+                    <ig-select icon="fa-briefcase" for="NatureOfBusiness" list="Model.NatureOfBusinessList" />
+                    <ig-select icon="fa-project-diagram" for="PurposeOfTransaction" list="Model.PuproseOfTransactionList" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <a role="button" id="saveBtn" class="btn btn-lg btn-warning form-control">Register</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@{await Html.RenderPartialAsync("_PicCropModal");}
+
+@section Scripts {
+    <script type="text/javascript" src="~/lib/select/js/select2.min.js"></script>
+    <script type="text/javascript" src="~/lib/croppie/croppie.min.js"></script>
+    <script type="text/javascript" src="~/lib/compressor/compressor.min.js"></script>
+    <script type="text/javascript" src="~/js/shared/Imager.js"></script>
+    <script type="text/javascript" src="~/js/agp/agpRegister.js" asp-append-version="true"></script>
+}

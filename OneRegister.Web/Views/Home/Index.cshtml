@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Welcome Page";
+}
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="container-fluid">
+        <div class="row mt-4">
+            <div class="col-lg-6">
+                <div>
+                    <img width="100%" src="~/pic/billboard/freelancer.png" alt="Hello" />
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mt-lg-5">
+                    <h2 class="billboard-title-success display-4">Hello, @User.Identity.Name</h2>
+                    <hr />
+                    <p>
+                        You are so welcome here! but base on your authorization and privilege you can have access to multiple parts of this portal.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container-fluid">
+        <div class="row mt-4">
+            <div class="col-lg-6">
+                <div>
+                    <img width="100%" src="~/pic/billboard/shared_goals.png" alt="welcome" />
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row mt-lg-5">
+                    <div class="col">
+                        <h2 class="billboard-title-success display-4">Hello, Welcome to OneRegister</h2>
+                        <hr />
+                        <p>
+                            You can login using top menu or just the button is located here
+                        </p>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col">
+                        <div>
+                            <a class="btn btn-outline-primary" href="~/Account/Login">I've already have a user, go to Login</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col">
+                        <div>
+                            or maybe you are a Merchant Owner and you want to <a class="btn-link" href="~/Merchant/UserRegister">register your own merchant</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+

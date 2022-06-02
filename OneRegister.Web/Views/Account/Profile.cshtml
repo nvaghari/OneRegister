@@ -1,0 +1,60 @@
+﻿@model OneRegister.Web.Models.Account.UserProfileViewModel
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<div class="row">
+    <div class="col-4">
+        <div class="list-group" id="profile-list" role="tablist">
+            <a class="list-group-item list-group-item-action list-group-item-warning active" data-toggle="list" role="tab" href="#info">
+                User Info
+            </a>
+            <a class="list-group-item list-group-item-action list-group-item-warning" data-toggle="list" role="tab" href="#change-password">
+                Change Password
+            </a>
+        </div>
+    </div>
+    <div class="col-8">
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="info" role="tabpanel">
+                <div class="form-group">
+                    <input type="hidden" class="form-control" id="userId" value="@Model.UserId" />
+                </div>
+                <div class="form-group">
+                    <label for="userName">User Name</label>
+                    <input type="text" readonly="readonly" class="form-control" id="userName" value="@Model.UserName" />
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" readonly="readonly" class="form-control" id="name" value="@Model.Name" />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" readonly="readonly" class="form-control" id="email" value="@Model.Email" />
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" readonly="readonly" class="form-control" id="phone" value="@Model.Phone" />
+                </div>
+            </div>
+            <div class="tab-pane fade" id="change-password" role="tabpanel">
+                <div class="form-group">
+                    <label for="oldPassword">Current Password</label>
+                    <input type="password" autocomplete="off" class="form-control" id="oldPassword" />
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" autocomplete="off" class="form-control" id="newPassword" />
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" autocomplete="off" class="form-control" id="confirmPassword" />
+                </div>
+                <a href="#" id="changePasswordBtn" class="btn btn-warning">Change Password</a>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/js/account/userProfile.js" asp-append-version="true"></script>
+}

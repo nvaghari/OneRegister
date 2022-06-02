@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Application Setting";
+}
+
+
+<div class="row">
+    <div class="col">
+        <h4>CodeList and Enumerations</h4>
+        <p>All Enumerations are saved in CodeList table to use for joining query and SQL programming</p>
+        <input type="button" id="syncCodeListBtn" class="btn btn-success" value="Sync CodeLists" />
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <h4>Permissions</h4>
+        <p>To Sync and Catch all permissions from methods and actions</p>
+        <input type="button" id="syncPermissionsBtn" class="btn btn-success" value="Sync Permissions" />
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <h4>Organizations Hierarchy</h4>
+        <p>Rebuild or Update all organizations hierarchy sequencer and their paths</p>
+        <input type="button" id="updateOrgPathsBtn" class="btn btn-success" value="Update Organization Paths" />
+        <hr />
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/js/setting/settingApp.js" asp-append-version="true"></script>
+}

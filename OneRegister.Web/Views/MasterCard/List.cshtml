@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "MasterCard List";
+}
+
+@section Styles{
+    @{await Html.RenderPartialAsync("_DataTableStyles"); }
+}
+<div class="row">
+    <div class="col-12">
+        <h4 class="text-primary">MasterCard List</h4>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-12">
+        <div>
+            <table id="customerList" class="table table-striped table-bordered dt-responsive nowrap w-100">
+                <thead class="bg-primary text-light">
+                    <tr>
+                        <th>Form No</th>
+                        <th>Form Type</th>
+                        <th>Form Status</th>
+                        <th>Channel</th>
+                        <th>Full Name</th>
+                        <th>Mobile No</th>
+                        <th>Id No</th>
+                        <th>Entity CIF</th>
+                        <th>List Service Packages</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{await Html.RenderPartialAsync("_DataTableScripts"); }
+    <script type="text/javascript" src="~/js/mastercard/list.js" asp-append-version="true"></script>
+}

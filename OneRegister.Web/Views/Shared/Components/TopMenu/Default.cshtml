@@ -1,0 +1,34 @@
+﻿<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-lg navbar-light bg-warning border-bottom">
+        <a class="btn btn-outline-primary" role="button" id="menu-toggle"><i class="fas fa-bars"></i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topMenu"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="topMenu">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user"></i><span class="ml-2 text-capitalize">@User.Identity.Name</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right bg-warning border-0">
+                            <a class="dropdown-item" asp-controller="Account" asp-action="Profile">Edit Account</a>
+                            <a class="dropdown-item" asp-controller="Account" asp-action="Logout">Logout</a>
+                        </div>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Account" asp-action="Login">
+                            <i class="fa fa-passport"></i><span class="ml-2">Login</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,157 @@
+﻿@{
+    ViewData["Title"] = "Merchant Commission";
+}
+
+@model OneRegister.Web.Models.MerchantRegistration.MerchantCommissionViewModel
+<form id="merchantCommissionForm" asp-antiforgery="true">
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Commission for Merchant(@Model.MerchantName)</h5>
+            <form-group-hidden target="Mid" />
+        </div>
+    </div>
+    <div class="row ml-md-2">
+        <div class="col-md-6">
+            <div class="my-5">
+                <h5 class="text-primary">A. Setup Cost</h5>
+                <hr />
+                <form-group-inline-input target="Setup_OneTime" type="Number" />
+                <form-group-inline-input target="Setup_Monthly" type="Number" />
+                <form-group-inline-input target="Setup_Annual" type="Number" />
+            </div>
+            <div class="my-5">
+                <h5 class="text-primary">B. EDC terminal cost (only applicable to physical Retailer)</h5>
+                <hr />
+                <form-group-inline-input target="EDC_Installation" type="Number" />
+                <form-group-inline-input target="EDC_Monthly" type="Number" />
+                <form-group-inline-input target="EDC_Deposit" type="Number" />
+                <form-group-inline-input target="EDC_TerminalDamage" type="Number" />
+                <form-group-inline-input target="EDC_PaperRollDamage" type="Number" />
+            </div>
+            <div class="my-5">
+                <h5 class="text-primary">C. Terminal Type</h5>
+                <hr />
+                <form-group-inline-input target="TerminalType_Sunmi" type="Number" />
+                <form-group-inline-input target="TerminalType_NewlandGPRS" type="Number" />
+                <form-group-inline-input target="TerminalType_N6" type="Number" />
+            </div>
+            <div class="my-5">
+                <h5 class="text-primary">D. Payment terms of Net Settlement Amount</h5>
+                <hr />
+                <h5>Credit Card</h5>
+                <form-group-inline-input target="CreditCard_Frequency" type="Number" />
+                <form-group-inline-input target="CreditCard_Currency" type="Text" />
+                <form-group-inline-input target="CreditCard_MinPayout" type="Number" />
+            </div>
+            <div class="my-5">
+                <h5>MyDebit</h5>
+                <form-group-inline-input target="MyDebit_Frequency" type="Number" />
+                <form-group-inline-input target="MyDebit_Currency" type="Text" />
+                <form-group-inline-input target="MyDebit_MinPayout" type="Number" />
+            </div>
+            <div class="my-5">
+                <h5>FPX</h5>
+                <form-group-inline-input target="FPX_Frequency" type="Number" />
+                <form-group-inline-input target="FPX_Currency" type="Text" />
+                <form-group-inline-input target="FPX_MinPayout" type="Number" />
+            </div>
+            <div class="my-5">
+                <h5>E-Wallets</h5>
+                <form-group-inline-input target="EWallets_Frequency" type="Number" />
+                <form-group-inline-input target="EWallets_Currency" type="Text" />
+                <form-group-inline-input target="EWallets_MinPayout" type="Number" />
+            </div>
+            <div class="my-5">
+                <h5>DuitNow QR</h5>
+                <form-group-inline-input target="DuitNowQR_Frequency" type="Number" />
+                <form-group-inline-input target="DuitNowQR_Currency" type="Text" />
+                <form-group-inline-input target="DuitNowQR_MinPayout" type="Number" />
+            </div>
+        </div>
+    </div>
+    <div class="row"><div class="col"><h5 class="text-primary">E. Company Payment System and Merchant Discount Rate (MDR)</h5><hr /></div></div>
+    <div class="row"><div class="col"><h5>Credit Card</h5></div></div>
+    <div class="row">
+        <div class="col"><form-group-inline-input target="CreditCard_Visa_POS_P" type="Number" /></div>
+        <div class="col"><form-group-inline-input target="CreditCard_Visa_POS_M" type="Number" /></div>
+    </div>
+    <div class="row">
+        <div class="col"><form-group-inline-input target="CreditCard_MasterCard_POS_P" type="Number" /></div>
+        <div class="col"><form-group-inline-input target="CreditCard_MasterCard_POS_M" type="Number" /></div>
+    </div>
+    <div class="row">
+        <div class="col"><form-group-inline-input target="CreditCard_Visa_EComm_P" type="Number" /></div>
+        <div class="col"><form-group-inline-input target="CreditCard_Visa_EComm_M" type="Number" /></div>
+    </div>
+    <div class="row">
+        <div class="col"><form-group-inline-input target="CreditCard_MasterCard_EComm_P" type="Number" /></div>
+        <div class="col"><form-group-inline-input target="CreditCard_MasterCard_EComm_M" type="Number" /></div>
+    </div>
+    <div class="row"><div class="col"><h5>MyDebit</h5></div></div>
+    <div class="row">
+        <div class="col"><form-group-inline-input target="MyDebit_All_POS_P" type="Number" /></div>
+        <div class="col"><form-group-inline-input target="MyDebit_All_POS_M" type="Number" /></div>
+    </div>
+    <div class="row"><div class="col"><h5>FPX</h5></div></div>
+    <div class="row">
+        <div class="col"><form-group-inline-input target="FPX_Online_P" type="Number" /></div>
+        <div class="col"><form-group-inline-input target="FPX_Online_M" type="Number" /></div>
+    </div>
+    <div class="row"><div class="col"><h5>MyDebit</h5></div></div>
+    <div class="row">
+        <div class="col"><form-group-inline-input target="EWallets_M1_P" type="Number" /></div>
+        <div class="col"><form-group-inline-input target="EWallets_M1_M" type="Number" /></div>
+    </div>
+    <div class="row">
+        <div class="col"><form-group-inline-input target="EWallets_Boost_P" type="Number" /></div>
+        <div class="col"><form-group-inline-input target="EWallets_Boost_M" type="Number" /></div>
+    </div>
+    <div class="row">
+        <div class="col"><form-group-inline-input target="EWallets_TNG_P" type="Number" /></div>
+        <div class="col"><form-group-inline-input target="EWallets_TNG_M" type="Number" /></div>
+    </div>
+    <div class="row">
+        <div class="col"><form-group-inline-input target="EWallets_Alipay_CN_P" type="Number" /></div>
+        <div class="col"><form-group-inline-input target="EWallets_Alipay_CN_M" type="Number" /></div>
+    </div>
+    <div class="row">
+        <div class="col"><form-group-inline-input target="EWallets_WeChat_CN_P" type="Number" /></div>
+        <div class="col"><form-group-inline-input target="EWallets_WeChat_CN_M" type="Number" /></div>
+    </div>
+    <div class="row">
+        <div class="col"><form-group-inline-input target="EWallets_WeChat_MY_P" type="Number" /></div>
+        <div class="col"><form-group-inline-input target="EWallets_WeChat_MY_M" type="Number" /></div>
+    </div>
+    <div class="row">
+        <div class="col"><form-group-inline-input target="EWallets_MayBank_QR_P" type="Number" /></div>
+        <div class="col"><form-group-inline-input target="EWallets_MayBank_QR_M" type="Number" /></div>
+    </div>
+    <div class="row">
+        <div class="col"><form-group-inline-input target="DuitNowQR_DuitNowQR_P" type="Number" /></div>
+        <div class="col"><form-group-inline-input target="DuitNowQR_DuitNowQR_M" type="Number" /></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <form-group-input target="Remark" multiline="4" />
+        </div>
+    </div>
+    <div class="row my-2">
+        <div class="col">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="commissionCheck">
+                <label class="custom-control-label" for="commissionCheck">
+                    By clicking button “Save”, I hereby certify that I have performed and conducted the necessary inquiries, investigations and conduct on-site reviews and audit of the Merchants’ business premises and systems to ensure that the documents and information furnished by the Merchant are true, accurate and complete.
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col text-right">
+            <input type="button" id="saveBtn" class="btn btn-primary" value="Save" />
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    <script type="text/javascript" src="~/js/merchant/editCommission.js" asp-append-version="true"></script>
+}

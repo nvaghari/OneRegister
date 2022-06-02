@@ -1,0 +1,89 @@
+﻿@using OneRegister.Data.Contract
+@model OneRegister.Web.Models.StudentRegistration.StudentRegisterViewModel
+@{
+    ViewData["Title"] = "Edit Student";
+}
+@section Styles{
+    <link rel="stylesheet" href="~/lib/croppie/croppie.css" />
+    <link href="~/lib/select/css/select2.min.css" rel="stylesheet" />
+    <link href="~/lib/select-boot/select2-bootstrap4.min.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-12">
+        <h4 class="text-primary">Update Student Info</h4>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-9">
+        <form asp-action="Edit" enctype="multipart/form-data" id="studentRegisterForm">
+            <ig-text for="Id" type="Hidden" />
+            <div class="form-row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <a role="button">
+                            <div id="picHolder" style="text-align:center;">
+                                <img id="photo" src="@Model.PhotoUrl" width="300" height="400" class="pic-preview"/>
+                            </div>
+                        </a>
+                    </div>
+                    <ig-file for="Photo" ref="PhotoId" link=@Model.PhotoUrl/>
+                </div>
+                <div class="col-lg-6">
+                    <ig-select icon="fa fa-hotel" for="SchoolId" list="Model.Schools" />
+                    <ig-select icon="fa fa-calendar-week" for="Year" list="Model.Years" />
+                    <ig-text icon="fa fa-child" for="StudentNumber" />
+                    <ig-text icon="fa fa-grin-alt" for="Name" />
+                    <ig-radio icon="fa-venus-mars" for="Gender" />
+                    <ig-select icon="fa fa-flag" for="Nationality" list="Model.Nationalities" />
+                    <ig-select icon="fa-passport" for="IdentityType" list="Model.IdentityTypes" />
+                    <ig-text icon="fa fa-id-card" for="IdentityNumber" />
+                    <ig-text icon="fa fa-birthday-cake" for="Birthday" type="Date" />
+                    <ig-select icon="fas fa-house-damage" for="ClassId" list="Model.ClassNames" />
+                    <ig-select icon="fa fa-laptop-medical" for="HomeRoomId" list="Model.HomeRooms" />
+                </div>
+            </div>
+            <div class="form-row">
+                <hr class="w-100" />
+                <div class="col-lg-6">
+                    <ig-text icon="fa fa-user-tie" for="ParentName" multi="2" />
+                    <ig-text icon="fa fa-phone-volume" for="ParentPhone" />
+                </div>
+                <div class="col-lg-6">
+                    <ig-text icon="fa fa-home" for="Address" multi="4" />
+                </div>
+            </div>
+            @if (Model.State == StateOfEntity.InProgress)
+            {
+                <div class="form-row">
+                    <div class="col">
+                        <a role="button" id="saveBtn" class="btn btn-lg btn-warning form-control">Update</a>
+                    </div>
+                    <div class="col">
+                        <a id="btnApprove" role="button" class="btn btn-lg btn-outline-danger form-control">Approve</a>
+                    </div>
+                </div>
+            }
+        </form>
+    </div>
+</div>
+
+@{await Html.RenderPartialAsync("_PicCropModal");}
+
+@section Scripts {
+    <script type="text/javascript" src="~/lib/select/js/select2.min.js"></script>
+    <script type="text/javascript" src="~/lib/croppie/croppie.min.js"></script>
+    <script type="text/javascript" src="~/lib/compressor/compressor.min.js"></script>
+    <script type="text/javascript" src="~/js/shared/Imager.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/student/studentEdit.js" asp-append-version="true"></script>
+
+    @if (Model.State == StateOfEntity.Complete)
+    {
+        <script>
+            $(function () {
+                OneRegister.alert.showWarning("This student is completed and you can't edit it. you can modify it via eDuit portal");
+            });
+        </script>
+    }
+}
+
+

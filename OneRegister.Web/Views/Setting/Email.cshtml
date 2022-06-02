@@ -1,0 +1,42 @@
+﻿@model OneRegister.Web.Models.Settings.MailSettingViewModel
+
+@{
+    ViewData["Title"] = "Email Setting";
+}
+
+<div class="row">
+    <div class="col">
+        <h4 class="text-primary">Email Setting</h4>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-xl-6 ml-md-3">
+        <form id="mailForm" asp-antiforgery="true">
+            <div class="form-row">
+                <div class="col">
+                    <form-group-input target="Email" />
+                    <form-group-input target="SmtpHost" />
+                    <form-group-input target="SmtpPort" />
+                    <form-check target="UseSecureConnection" />
+                    <form-check target="UseAuthentication" />
+                    <form-group-input target="User" />
+                    <form-group-input target="Password" type="Password" />
+                    <form-group-input multiline="5" target="TestText" />
+                    <form-group-input target="EmailTo" />
+                    <input type="button" id="testBtn" class="btn btn-primary" value="Send Test" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <div class="float-right">
+                        <input type="button" id="saveBtn" class="btn btn-warning" value="Save" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript" src="~/js/setting/settingMail.js" asp-append-version="true"></script>
+}
